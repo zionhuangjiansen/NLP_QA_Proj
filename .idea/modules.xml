@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Q&amp;A_Proj.iml" filepath="$PROJECT_DIR$/.idea/Q&amp;A_Proj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Tanxin_ML_Projects/.idea/Tanxin_ML_Projects.iml" filepath="$PROJECT_DIR$/../Tanxin_ML_Projects/.idea/Tanxin_ML_Projects.iml" />
     </modules>
   </component>
 </project>

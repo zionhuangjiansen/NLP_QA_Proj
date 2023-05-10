@@ -18,10 +18,19 @@ class ZhaPianSpider(scrapy.Spider):
 
     def parse_detail(self, response):
         title = response.css('.core_title_txt.pull-left.text-overflow::text').extract()
-        authors = response.css('.p_author_name.j_user_card::text').extract()
-        contents_list = response.css('.d_post_content.j_d_post_content').extract()
-        content_list = self.get_content(contents_list)
-        pass
+        if title:
+            authors = response.css('.p_author_name.j_user_card::text').extract()
+            contents_list = response.css('.d_post_content.j_d_post_content').extract()
+            content_list = self.get_content(contents_list)
+            bbs_sendtime_list, bbs_floor_list = self.get_send_time_and_floor(response)
+            for i in range(len(authors)):
+                tieba_item = TiebaItem()
+                tieba_item["title"] = title[0]
+                tieba_item["author"] = authors[i]
+                tieba_item["content"] = content_list[i]
+                tieba_item["reply_time"] = bbs_sendtime_list[i]
+                tieba_item["floor"] = bbs_floor_list[i]
+                return tieba_item
 
     def get_content(self, contents):
         contents_list = []
